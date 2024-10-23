@@ -168,4 +168,5 @@ const getUserPosts = async (req, res) => {
 	}
 };
 
-export { createPost, getPost, deletePost, likeUnlikePost, replyToPost, getFeedPosts, getUserPosts };
+
+export { createPost, getPost, deletePost, likeUnlikePost, replyToPost, getFeedPosts, getUserPosts};

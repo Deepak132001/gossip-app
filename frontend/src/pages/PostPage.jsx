@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Divider, Flex, Image, Spinner, Text } from "@chakra-ui/react";
+import { Avatar, Box, Divider, Flex, Image, Spinner, Text } from "@chakra-ui/react";
 import Actions from "../components/Actions";
 import { useEffect } from "react";
 import Comment from "../components/Comment";
@@ -108,10 +108,9 @@ const PostPage = () => {
 
 			<Flex justifyContent={"space-between"}>
 				<Flex gap={2} alignItems={"center"}>
-					<Text fontSize={"2xl"}>👋</Text>
-					<Text color={"gray.light"}>Get the app to like, reply and post.</Text>
+					<Text fontSize={"2xl"}>😉</Text>
+					<Text color={"gray.light"}>Potete parlare di qualsiasi persona pubblica o privata ma assicuratevi di non menzionare il nome di nessua persona privata che conoscete, Grazie! sentitevi liberi di chiacchierare dei tuoi compagni o colleghi</Text>
 				</Flex>
-				<Button>Get</Button>
 			</Flex>
 
 			<Divider my={4} />
