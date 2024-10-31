@@ -48,7 +48,7 @@ const UserPost = ({ postImg, postTitle, likes, replies }) => {
 					<Flex justifyContent={"space-between"} w={"full"}>
 						<Flex w={"full"} alignItems={"center"}>
 							<Text fontSize={"sm"} fontWeight={"bold"}>
-								markzuckerberg
+								Deep
 							</Text>
 							<Image src='/verified.png' w={4} h={4} ml={1} />
 						</Flex>
@@ -73,11 +73,11 @@ const UserPost = ({ postImg, postTitle, likes, replies }) => {
 
 					<Flex gap={2} alignItems={"center"}>
 						<Text color={"gray.light"} fontSize='sm'>
-							{replies} replies
+							{replies} risposte
 						</Text>
 						<Box w={0.5} h={0.5} borderRadius={"full"} bg={"gray.light"}></Box>
 						<Text color={"gray.light"} fontSize='sm'>
-							{likes} likes
+							{likes} like
 						</Text>
 					</Flex>
 				</Flex>

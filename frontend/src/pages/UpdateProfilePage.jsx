@@ -71,7 +71,7 @@ export default function UpdateProfilePage() {
 					p={6}
 				>
 					<Heading lineHeight={1.1} fontSize={{ base: "2xl", sm: "3xl" }}>
-						User Profile Edit
+						Aggiorna Profilo
 					</Heading>
 					<FormControl id='userName'>
 						<Stack direction={["column", "row"]} spacing={6}>
@@ -80,14 +80,14 @@ export default function UpdateProfilePage() {
 							</Center>
 							<Center w='full'>
 								<Button w='full' onClick={() => fileRef.current.click()}>
-									Change Avatar
+									Cambia Immagine
 								</Button>
 								<Input type='file' hidden ref={fileRef} onChange={handleImageChange} />
 							</Center>
 						</Stack>
 					</FormControl>
 					<FormControl>
-						<FormLabel>Full name</FormLabel>
+						<FormLabel>Nome Completo</FormLabel>
 						<Input
 							placeholder='John Doe'
 							value={inputs.name}
@@ -97,7 +97,7 @@ export default function UpdateProfilePage() {
 						/>
 					</FormControl>
 					<FormControl>
-						<FormLabel>User name</FormLabel>
+						<FormLabel>Nome Utente</FormLabel>
 						<Input
 							placeholder='johndoe'
 							value={inputs.username}
@@ -107,7 +107,7 @@ export default function UpdateProfilePage() {
 						/>
 					</FormControl>
 					<FormControl>
-						<FormLabel>Email address</FormLabel>
+						<FormLabel>Email</FormLabel>
 						<Input
 							placeholder='your-email@example.com'
 							value={inputs.email}
@@ -145,7 +145,7 @@ export default function UpdateProfilePage() {
 								bg: "red.500",
 							}}
 						>
-							Cancel
+							Annulla
 						</Button>
 						<Button
 							bg={"green.400"}
@@ -157,7 +157,7 @@ export default function UpdateProfilePage() {
 							type='submit'
 							isLoading={updating}
 						>
-							Submit
+							Aggiorna
 						</Button>
 					</Stack>
 				</Stack>

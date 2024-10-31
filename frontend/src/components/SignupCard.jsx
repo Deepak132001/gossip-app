@@ -62,7 +62,7 @@ export default function SignupCard() {
 			<Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
 				<Stack align={"center"}>
 					<Heading fontSize={"4xl"} textAlign={"center"}>
-						Sign up
+						Registrati
 					</Heading>
 				</Stack>
 				<Box rounded={"lg"} bg={useColorModeValue("white", "gray.dark")} boxShadow={"lg"} p={8}>
@@ -70,7 +70,7 @@ export default function SignupCard() {
 						<HStack>
 							<Box>
 								<FormControl isRequired>
-									<FormLabel>Full name</FormLabel>
+									<FormLabel>Nome completo</FormLabel>
 									<Input
 										type='text'
 										onChange={(e) => setInputs({ ...inputs, name: e.target.value })}
@@ -80,7 +80,7 @@ export default function SignupCard() {
 							</Box>
 							<Box>
 								<FormControl isRequired>
-									<FormLabel>Username</FormLabel>
+									<FormLabel>Nome Utente</FormLabel>
 									<Input
 										type='text'
 										onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
@@ -90,7 +90,7 @@ export default function SignupCard() {
 							</Box>
 						</HStack>
 						<FormControl isRequired>
-							<FormLabel>Email address</FormLabel>
+							<FormLabel>Email</FormLabel>
 							<Input
 								type='email'
 								onChange={(e) => setInputs({ ...inputs, email: e.target.value })}
@@ -126,7 +126,7 @@ export default function SignupCard() {
 								}}
 								onClick={handleSignup}
 							>
-								Sign up
+								Registrati
 							</Button>
 						</Stack>
 						<Stack pt={6}>

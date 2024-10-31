@@ -3,7 +3,6 @@ import {
 	AvatarBadge,
 	Box,
 	Flex,
-	Image,
 	Stack,
 	Text,
 	WrapItem,
@@ -61,10 +60,11 @@ const Conversation = ({ conversation, isOnline }) => {
 			</WrapItem>
 
 			<Stack direction={"column"} fontSize={"sm"}>
-				<Text fontWeight='700' display={"flex"} alignItems={"center"}>
-					{user.username} <Image src='/verified.png' w={4} h={4} ml={1} />
+				<Text fontWeight='700' display={"flex"} alignItems={"center"} color={"white"}>
+					{user.username} 
+					{/* <Image src='/verified.png' w={4} h={4} ml={1} /> */}
 				</Text>
-				<Text fontSize={"xs"} display={"flex"} alignItems={"center"} gap={1}>
+				<Text fontSize={"xs"} display={"flex"} alignItems={"center"} gap={1} color={"gray.200"}>
 					{currentUser._id === lastMessage.sender ? (
 						<Box color={lastMessage.seen ? "blue.400" : ""}>
 							<BsCheck2All size={16} />

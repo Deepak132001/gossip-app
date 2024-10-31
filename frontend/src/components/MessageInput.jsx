@@ -1,3 +1,4 @@
+
 import {
 	Flex,
 	Image,
@@ -87,7 +88,7 @@ const MessageInput = ({ setMessages }) => {
 				<InputGroup>
 					<Input
 						w={"full"}
-						placeholder='Type a message'
+						placeholder='Scrivi un messaggio '
 						onChange={(e) => setMessageText(e.target.value)}
 						value={messageText}
 					/>

@@ -11,6 +11,9 @@ import UpdateProfilePage from "./pages/UpdateProfilePage";
 import CreatePost from "./components/CreatePost";
 import ChatPage from "./pages/ChatPage";
 import { SettingsPage } from "./pages/SettingsPage";
+import OtherPostsPage from "./pages/OtherPostPage";
+import FollowedPostsPage from "./pages/FollowedPostsPage";
+import SearchPage from "./components/SearchPage";
 function App() {
 	const user = useRecoilValue(userAtom);
 	const { pathname } = useLocation();
@@ -39,6 +42,9 @@ function App() {
 					<Route path='/:username/post/:pid' element={<PostPage />} />
 					<Route path='/chat' element={user ? <ChatPage /> : <Navigate to={"/auth"} />} />
 					<Route path='/settings' element={user ? <SettingsPage /> : <Navigate to={"/auth"} />} />
+					<Route path='/other-feeds' element={user ? <OtherPostsPage /> : <Navigate to={"/auth"} />} />
+					<Route path='/followed-posts' element={user ? <FollowedPostsPage /> : <Navigate to={"/auth"} />} />
+					<Route path="/search" element={<SearchPage />} />
 				</Routes>
 			</Container>
 		</Box>

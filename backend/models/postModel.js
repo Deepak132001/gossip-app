@@ -22,6 +22,10 @@ const postSchema = mongoose.Schema(
 		},
 		replies: [
 			{
+				_id: {
+					type: mongoose.Schema.Types.ObjectId,
+					auto: true,
+				},
 				userId: {
 					type: mongoose.Schema.Types.ObjectId,
 					ref: "User",
@@ -39,6 +43,11 @@ const postSchema = mongoose.Schema(
 				},
 			},
 		],
+		followers: {
+			type: [mongoose.Schema.Types.ObjectId],
+			ref: "User",
+			default: [],
+		}
 	},
 	{
 		timestamps: true,

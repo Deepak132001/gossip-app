@@ -74,7 +74,7 @@ export default function LoginCard() {
 				>
 					<Stack spacing={4}>
 						<FormControl isRequired>
-							<FormLabel>Username</FormLabel>
+							<FormLabel>Nome utente</FormLabel>
 							<Input
 								type='text'
 								value={inputs.username}
@@ -118,7 +118,7 @@ export default function LoginCard() {
 							<Text align={"center"}>
 								Don&apos;t have an account?{" "}
 								<Link color={"blue.400"} onClick={() => setAuthScreen("signup")}>
-									Sign up
+									Registrati
 								</Link>
 							</Text>
 						</Stack>

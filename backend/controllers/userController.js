@@ -21,7 +21,7 @@ const getUserProfile = async (req, res) => {
 			user = await User.findOne({ username: query }).select("-password").select("-updatedAt");
 		}
 
-		if (!user) return res.status(404).json({ error: "User not found" });
+		if (!user) return res.status(404).json({ error: "Utente non trovato" });
 
 		res.status(200).json(user);
 	} catch (err) {
@@ -36,7 +36,7 @@ const signupUser = async (req, res) => {
 		const user = await User.findOne({ $or: [{ email }, { username }] });
 
 		if (user) {
-			return res.status(400).json({ error: "User already exists" });
+			return res.status(400).json({ error: "L'utente esiste già" });
 		}
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
@@ -61,7 +61,7 @@ const signupUser = async (req, res) => {
 				profilePic: newUser.profilePic,
 			});
 		} else {
-			res.status(400).json({ error: "Invalid user data" });
+			res.status(400).json({ error: "Dati utente non validi" });
 		}
 	} catch (err) {
 		res.status(500).json({ error: err.message });
@@ -75,7 +75,7 @@ const loginUser = async (req, res) => {
 		const user = await User.findOne({ username });
 		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
-		if (!user || !isPasswordCorrect) return res.status(400).json({ error: "Invalid username or password" });
+		if (!user || !isPasswordCorrect) return res.status(400).json({ error: "Nome utente o password non validi" });
 
 		if (user.isFrozen) {
 			user.isFrozen = false;
@@ -101,7 +101,7 @@ const loginUser = async (req, res) => {
 const logoutUser = (req, res) => {
 	try {
 		res.cookie("jwt", "", { maxAge: 1 });
-		res.status(200).json({ message: "User logged out successfully" });
+		res.status(200).json({ message: "" });
 	} catch (err) {
 		res.status(500).json({ error: err.message });
 		console.log("Error in signupUser: ", err.message);
@@ -115,9 +115,9 @@ const followUnFollowUser = async (req, res) => {
 		const currentUser = await User.findById(req.user._id);
 
 		if (id === req.user._id.toString())
-			return res.status(400).json({ error: "You cannot follow/unfollow yourself" });
+			return res.status(400).json({ error: "Non puoi seguire te stesso" });
 
-		if (!userToModify || !currentUser) return res.status(400).json({ error: "User not found" });
+		if (!userToModify || !currentUser) return res.status(400).json({ error: "Utente non trovato" });
 
 		const isFollowing = currentUser.following.includes(id);
 
@@ -125,12 +125,12 @@ const followUnFollowUser = async (req, res) => {
 			// Unfollow user
 			await User.findByIdAndUpdate(id, { $pull: { followers: req.user._id } });
 			await User.findByIdAndUpdate(req.user._id, { $pull: { following: id } });
-			res.status(200).json({ message: "User unfollowed successfully" });
+			res.status(200).json({ message: "Utente rimosso" });
 		} else {
 			// Follow user
 			await User.findByIdAndUpdate(id, { $push: { followers: req.user._id } });
 			await User.findByIdAndUpdate(req.user._id, { $push: { following: id } });
-			res.status(200).json({ message: "User followed successfully" });
+			res.status(200).json({ message: "Utente seguito" });
 		}
 	} catch (err) {
 		res.status(500).json({ error: err.message });
@@ -145,10 +145,10 @@ const updateUser = async (req, res) => {
 	const userId = req.user._id;
 	try {
 		let user = await User.findById(userId);
-		if (!user) return res.status(400).json({ error: "User not found" });
+		if (!user) return res.status(400).json({ error: "Utente non trovato" });
 
 		if (req.params.id !== userId.toString())
-			return res.status(400).json({ error: "You cannot update other user's profile" });
+			return res.status(400).json({ error: "Non puoi aggiornare il profilo di un altro utente" });
 
 		if (password) {
 			const salt = await bcrypt.genSalt(10);
@@ -239,6 +239,26 @@ const freezeAccount = async (req, res) => {
 	}
 };
 
+const searchUsers = async (req,res) => {
+	const query = req.query.query;
+
+  if (!query) {
+    return res.status(400).json({ error: "il nome è obbligatorio" });
+  }
+
+  try {
+    // Find users whose username matches the query (case-insensitive)
+    const users = await User.find({
+      username: { $regex: query, $options: 'i' }
+    }).select('_id username profilePic');
+
+    res.json(users);
+  } catch (error) {
+    console.error('Error searching users:', error);
+    res.status(500).json({ error: "Si è verificato un errore durante la ricerca degli utenti" });
+  }
+}
+
 export {
 	signupUser,
 	loginUser,
@@ -248,4 +268,5 @@ export {
 	getUserProfile,
 	getSuggestedUsers,
 	freezeAccount,
+	searchUsers
 };
