@@ -66,9 +66,9 @@ export default function SignupCard() {
 					</Heading>
 				</Stack>
 				<Box rounded={"lg"} bg={useColorModeValue("white", "gray.dark")} boxShadow={"lg"} p={8}>
-					<Stack spacing={3}>
+					<Stack spacing={4}>
 						<HStack>
-							<Box>
+							<Box width={{ base: "100%", md: "auto" }}>
 								<FormControl isRequired>
 									<FormLabel>Nome completo</FormLabel>
 									<Input
@@ -78,7 +78,7 @@ export default function SignupCard() {
 									/>
 								</FormControl>
 							</Box>
-							<Box>
+							<Box width={{ base: "100%", md: "auto" }}>
 								<FormControl isRequired>
 									<FormLabel>Nome Utente</FormLabel>
 									<Input
@@ -131,7 +131,7 @@ export default function SignupCard() {
 						</Stack>
 						<Stack pt={6}>
 							<Text align={"center"}>
-								Hai gia l'account?{" "}
+								Hai gia l&apos;account?{" "}
 								<Link color={"blue.400"} onClick={() => setAuthScreen("login")}>
 									Login
 								</Link>
