@@ -67,7 +67,7 @@ export default function SignupCard() {
 				</Stack>
 				<Box rounded={"lg"} bg={useColorModeValue("white", "gray.dark")} boxShadow={"lg"} p={8}>
 					<Stack spacing={4}>
-						<HStack>
+						<HStack wrap="wrap" spacing={4} align="stretch">
 							<Box width={{ base: "100%", md: "auto" }}>
 								<FormControl isRequired>
 									<FormLabel>Nome completo</FormLabel>
