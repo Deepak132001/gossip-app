@@ -34,7 +34,7 @@ const Actions2 = ({ post }) => {
     if (!user)
       return showToast(
         "Error",
-        "You must be logged in to like a post",
+        "Devi essere loggato per mettere mi piace a un gossip",
         "error"
       );
     if (isLiking) return;
@@ -81,7 +81,7 @@ const Actions2 = ({ post }) => {
     if (!user) {
       return showToast(
         "Error",
-        "You must be logged in to reply to a post",
+        "Devi essere loggato per rispondere ad un gossip",
         "error"
       );
     }
@@ -114,7 +114,7 @@ const Actions2 = ({ post }) => {
           )
         );
 
-        showToast("Success", "Reply posted successfully", "success");
+        showToast("Success", "Risposta pubblicata", "success");
       }
 
       // Refetch post to ensure full sync
@@ -156,7 +156,7 @@ const Actions2 = ({ post }) => {
         return showToast("Error", data.error, "error");
       }
       setShareLink(data.shareLink);
-      showToast("Success", "Link copied to clipboard!", "success");
+      showToast("Success", "Link copiato!", "success");
       navigator.clipboard.writeText(data.shareLink);
     } catch (error) {
       showToast("Error", error.message, "error");

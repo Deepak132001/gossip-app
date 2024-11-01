@@ -16,7 +16,7 @@ const createPost = async (req, res) => {
 		let { img } = req.body;
 
 		if (!postedBy || !text) {
-			return res.status(400).json({ error: "Postedby and text fields are required" });
+			return res.status(400).json({ error: "Il testo è obbligatorio" });
 		}
 
 		const user = await User.findById(postedBy);
@@ -28,10 +28,10 @@ const createPost = async (req, res) => {
 			return res.status(401).json({ error: "Non autorizzato a creare Gossip" });
 		}
 
-		const maxLength = 500;
-		if (text.length > maxLength) {
-			return res.status(400).json({ error: `Il testo deve contenere meno di ${maxLength} caratteri` });
-		}
+		// const maxLength = 500;
+		// if (text.length > maxLength) {
+		// 	return res.status(400).json({ error: `Il testo deve contenere meno di ${maxLength} caratteri` });
+		// }
 
 		if (img) {
 			const uploadedResponse = await cloudinary.uploader.upload(img);

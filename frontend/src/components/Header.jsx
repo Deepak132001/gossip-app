@@ -9,7 +9,6 @@ import {
   MenuItem,
   IconButton,
   useColorModeValue,
-  Box,
 } from "@chakra-ui/react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";

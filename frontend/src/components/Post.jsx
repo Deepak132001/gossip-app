@@ -44,7 +44,7 @@ const Post = ({ post, postedBy }) => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update follow status");
+        throw new Error("Impossibile aggiornare lo stato di follow");
       }
 
       setIsFollowing(!isFollowing);
@@ -54,7 +54,6 @@ const Post = ({ post, postedBy }) => {
   };
 
   // fine useeffect
-
   useEffect(() => {
     const getUser = async () => {
       try {
@@ -77,7 +76,7 @@ const Post = ({ post, postedBy }) => {
   const handleDeletePost = async (e) => {
     try {
       e.preventDefault();
-      if (!window.confirm("Are you sure you want to delete this post?")) return;
+      if (!window.confirm("Sei sicuro di voler eliminare questo gossip?")) return;
 
       const res = await fetch(`/api/posts/${post._id}`, {
         method: "DELETE",
@@ -87,7 +86,7 @@ const Post = ({ post, postedBy }) => {
         showToast("Error", data.error, "error");
         return;
       }
-      showToast("Success", "Post deleted", "success");
+      showToast("Success", "Gossip eliminato", "success");
       setPosts(posts.filter((p) => p._id !== post._id));
     } catch (error) {
       showToast("Error", error.message, "error");

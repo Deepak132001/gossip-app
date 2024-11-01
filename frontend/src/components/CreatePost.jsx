@@ -63,7 +63,7 @@ const CreatePost = () => {
         showToast("Error", data.error, "error");
         return;
       }
-      showToast("Success", "Post created successfully", "success");
+      showToast("Success", "Gossip creato con successo", "success");
       if (username === user.username) {
         setPosts([data, ...posts]);
       }

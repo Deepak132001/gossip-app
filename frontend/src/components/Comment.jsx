@@ -11,7 +11,7 @@ const Comment = ({ reply, lastReply, postId, onReplyDeleted }) => {
   const showToast = useShowToast();
 
   const handleDeleteReply = async () => {
-    if (!window.confirm("Are you sure you want to delete this reply?")) return;
+    if (!window.confirm("Sei sicuro di voler eliminare questa risposta?")) return;
 
     try {
       const response = await fetch(`/api/posts/${postId}/replies/${reply._id}`, {
@@ -26,7 +26,7 @@ const Comment = ({ reply, lastReply, postId, onReplyDeleted }) => {
         throw new Error("Failed to delete reply");
       }
 
-      showToast("Success", "Reply deleted successfully", "success");
+      showToast("Success", "Risposta eliminata", "success");
       if (onReplyDeleted) {
         onReplyDeleted(reply._id);
       }

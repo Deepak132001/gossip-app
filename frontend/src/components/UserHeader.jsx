@@ -28,7 +28,7 @@ const UserHeader = ({ user }) => {
       toast({
         title: "Success.",
         status: "success",
-        description: "Profile link copied.",
+        description: "Link del profilo copiato",
         duration: 3000,
         isClosable: true,
       });
@@ -157,7 +157,7 @@ const UserHeader = ({ user }) => {
           onClick={() => setSelectedTab("iTuoiGossip")}
           color={selectedTab === "iTuoiGossip" ? "white" : "gray.light"}
         >
-          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}> I tuoi Gossip</Text>
+          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>Miei Gossip</Text>
         </Flex>
         <Flex
           flex={1}
@@ -168,7 +168,7 @@ const UserHeader = ({ user }) => {
           onClick={() => setSelectedTab("gossipSeguiti")}
           color={selectedTab === "gossipSeguiti" ? "white" : "gray.light"}
         >
-          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>Gossip seguiti</Text>
+          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>Gossip tracciati</Text>
         </Flex>
       </Flex>
 

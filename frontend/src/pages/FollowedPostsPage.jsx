@@ -20,7 +20,7 @@ const FollowedPostsPage = () => {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to fetch followed posts");
+          throw new Error("Impossibile recuperare i gossip seguiti");
         }
 
         const data = await response.json();

@@ -7,7 +7,7 @@ export const SettingsPage = () => {
 	const logout = useLogout();
 
 	const freezeAccount = async () => {
-		if (!window.confirm("Are you sure you want to freeze your account?")) return;
+		if (!window.confirm("Sei sicuro di voler congelare il tuo account?")) return;
 
 		try {
 			const res = await fetch("/api/users/freeze", {
@@ -21,7 +21,7 @@ export const SettingsPage = () => {
 			}
 			if (data.success) {
 				await logout();
-				showToast("Success", "Your account has been frozen", "success");
+				showToast("Success", "Il tuo account è stato congelato", "success");
 			}
 		} catch (error) {
 			showToast("Error", error.message, "error");
@@ -33,7 +33,7 @@ export const SettingsPage = () => {
 			<Text my={1} fontWeight={"bold"}>
 				Freeze Your Account
 			</Text>
-			<Text my={1}>You can unfreeze your account anytime by logging in.</Text>
+			<Text my={1}>Puoi sbloccare il tuo account in qualsiasi momento effettuando accesso.</Text>
 			<Button size={"sm"} colorScheme='red' onClick={freezeAccount}>
 				Freeze
 			</Button>

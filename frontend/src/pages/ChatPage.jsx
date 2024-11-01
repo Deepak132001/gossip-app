@@ -80,7 +80,7 @@ const ChatPage = () => {
     e.preventDefault();
 
     if (!searchText.trim()) { // Check if searchText is empty
-      showToast("Warning", "Si prega di scrivere un nome utente per la ricerca", "warning");
+      showToast("Warning", "Si prega di scrivere un nome utente", "warning");
       return;
     }
 

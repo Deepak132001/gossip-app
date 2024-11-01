@@ -82,7 +82,7 @@ const PostPage = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to update follow status");
+        throw new Error("Impossibile aggiornare lo stato di seguire");
       }
 
       setIsFollowing(!isFollowing);
@@ -96,7 +96,7 @@ const PostPage = () => {
     if (!currentPost) return;
 
     try {
-      if (!window.confirm("Are you sure you want to delete this post?")) return;
+      if (!window.confirm("Sei sicuro di voler eliminare questo gossip?")) return;
 
       const res = await fetch(`/api/posts/${currentPost._id}`, {
         method: "DELETE",
@@ -106,7 +106,7 @@ const PostPage = () => {
         showToast("Error", data.error, "error");
         return;
       }
-      showToast("Success", "Post deleted", "success");
+      showToast("Success", "Gossip eliminato", "success");
       navigate(`/${user.username}`);
     } catch (error) {
       showToast("Error", error.message, "error");

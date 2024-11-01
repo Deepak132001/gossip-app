@@ -15,7 +15,7 @@ const usePreviewImg = () => {
 
 			reader.readAsDataURL(file);
 		} else {
-			showToast("Invalid file type", " Please select an image file", "error");
+			showToast("Tipo di file non valido", " Seleziona un file JPG/JPEG/PNG", "error");
 			setImgUrl(null);
 		}
 	};
