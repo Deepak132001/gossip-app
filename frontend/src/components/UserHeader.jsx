@@ -84,7 +84,13 @@ const UserHeader = ({ user }) => {
           </Text>
           <Flex gap={2} alignItems={"center"}>
             <Text fontSize={"sm"}>{user.username}</Text>
-            <Text fontSize={"xs"} bg={"gray.dark"} color={"gray.light"} p={1} borderRadius={"full"}>
+            <Text
+              fontSize={"xs"}
+              bg={"gray.dark"}
+              color={"gray.light"}
+              p={1}
+              borderRadius={"full"}
+            >
               gossip.com
             </Text>
           </Flex>
@@ -103,7 +109,7 @@ const UserHeader = ({ user }) => {
           {!user.profilePic && (
             <Avatar
               name={user.name}
-              src='https://bit.ly/broken-link'
+              src="https://bit.ly/broken-link"
               size={{
                 base: "md",
                 md: "xl",
@@ -116,7 +122,7 @@ const UserHeader = ({ user }) => {
       <Text>{user.bio}</Text>
 
       {currentUser?._id === user._id && (
-        <Link as={RouterLink} to='/update'>
+        <Link as={RouterLink} to="/update">
           <Button size={"sm"}>Aggiorna Profilo</Button>
         </Link>
       )}
@@ -130,7 +136,7 @@ const UserHeader = ({ user }) => {
           <Text>{user.followers.length} Follower</Text>
         </Flex>
         <Flex>
-          <Box className='icon-container'>
+          <Box className="icon-container">
             <Menu>
               <MenuButton>
                 <CgMoreO size={24} cursor={"pointer"} />
@@ -148,27 +154,64 @@ const UserHeader = ({ user }) => {
       </Flex>
 
       <Flex w={"full"}>
+
+        {/* modificato per se current user li mostro miei gossip altrimenti gossip */}
+        {currentUser?._id === user._id && (
+          <Flex
+            flex={1}
+            borderBottom={
+              selectedTab === "iTuoiGossip"
+                ? "1.5px solid white"
+                : "1px solid gray"
+            }
+            justifyContent={"center"}
+            pb="3"
+            cursor={"pointer"}
+            onClick={() => setSelectedTab("iTuoiGossip")}
+            color={selectedTab === "iTuoiGossip" ? "white" : "gray.light"}
+          >
+            <Text
+              fontWeight={"bold"}
+              color={useColorModeValue("black", "white")}
+            >
+              Miei Gossip
+            </Text>
+          </Flex>
+        )}
+        {/* fine */}
         <Flex
           flex={1}
-          borderBottom={selectedTab === "iTuoiGossip" ? "1.5px solid white" : "1px solid gray"}
+          borderBottom={
+            selectedTab === "iTuoiGossip"
+              ? "1.5px solid white"
+              : "1px solid gray"
+          }
           justifyContent={"center"}
-          pb='3'
+          pb="3"
           cursor={"pointer"}
           onClick={() => setSelectedTab("iTuoiGossip")}
           color={selectedTab === "iTuoiGossip" ? "white" : "gray.light"}
         >
-          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>Miei Gossip</Text>
+          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>
+            Gossip
+          </Text>
         </Flex>
         <Flex
           flex={1}
-          borderBottom={selectedTab === "gossipSeguiti" ? "1.5px solid white" : "1px solid gray"}
+          borderBottom={
+            selectedTab === "gossipSeguiti"
+              ? "1.5px solid white"
+              : "1px solid gray"
+          }
           justifyContent={"center"}
-          pb='3'
+          pb="3"
           cursor={"pointer"}
           onClick={() => setSelectedTab("gossipSeguiti")}
           color={selectedTab === "gossipSeguiti" ? "white" : "gray.light"}
         >
-          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>Gossip tracciati</Text>
+          <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>
+            Gossip tracciati
+          </Text>
         </Flex>
       </Flex>
 
@@ -176,8 +219,8 @@ const UserHeader = ({ user }) => {
       {selectedTab === "iTuoiGossip" && (
         <Box w={"full"}>
           {posts.map((post) => (
-				<Post key={post._id} post={post} postedBy={post.postedBy} />
-			))}
+            <Post key={post._id} post={post} postedBy={post.postedBy} />
+          ))}
         </Box>
       )}
       {selectedTab === "gossipSeguiti" && (
@@ -198,10 +241,6 @@ const UserHeader = ({ user }) => {
 };
 
 export default UserHeader;
-
-
-
-
 
 // import { Avatar } from "@chakra-ui/avatar";
 // import { Box, Flex, Link, Text, VStack } from "@chakra-ui/layout";
