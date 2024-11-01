@@ -155,7 +155,6 @@ const UserHeader = ({ user }) => {
       </Flex>
 
       <Flex w={"full"}>
-
         <Flex
           flex={1}
           borderBottom={
@@ -170,7 +169,7 @@ const UserHeader = ({ user }) => {
           color={selectedTab === "iTuoiGossip" ? "white" : "gray.light"}
         >
           <Text fontWeight={"bold"} color={useColorModeValue("black", "white")}>
-            Gossip
+          {currentUser?._id === user._id ? "Miei gossip" : "Gossip"}
           </Text>
         </Flex>
         <Flex

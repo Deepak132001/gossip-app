@@ -66,7 +66,7 @@ export default function SignupCard() {
 					</Heading>
 				</Stack>
 				<Box rounded={"lg"} bg={useColorModeValue("white", "gray.dark")} boxShadow={"lg"} p={8}>
-					<Stack spacing={4}>
+					<Stack spacing={3}>
 						<HStack>
 							<Box>
 								<FormControl isRequired>
@@ -131,7 +131,7 @@ export default function SignupCard() {
 						</Stack>
 						<Stack pt={6}>
 							<Text align={"center"}>
-								Already a user?{" "}
+								Hai gia l'account?{" "}
 								<Link color={"blue.400"} onClick={() => setAuthScreen("login")}>
 									Login
 								</Link>
