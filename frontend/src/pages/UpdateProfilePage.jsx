@@ -58,6 +58,17 @@ export default function UpdateProfilePage() {
 			setUpdating(false);
 		}
 	};
+
+	const handleCancel = () => {
+		setInputs({
+			name: user.name,
+			username: user.username,
+			email: user.email,
+			bio: user.bio,
+			password: "",
+		});
+	};
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<Flex align={"center"} justify={"center"} my={6}>
@@ -144,6 +155,7 @@ export default function UpdateProfilePage() {
 							_hover={{
 								bg: "red.500",
 							}}
+							onClick={handleCancel}
 						>
 							Annulla
 						</Button>
