@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
 import useGetUserProfile from "../hooks/useGetUserProfile";
 import useShowToast from "../hooks/useShowToast";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
@@ -149,9 +149,11 @@ const PostPage = () => {
         <Flex w={"full"} alignItems={"center"} gap={3}>
           <Avatar src={user.profilePic} size={"md"} name={user.username} />
           <Flex>
-            <Text fontSize={"sm"} fontWeight={"bold"}>
+            <Link to={`/${user.username}`}>
+            <Text fontSize={"sm"} fontWeight={"bold"} cursor="pointer">
               {user.username}
             </Text>
+            </Link>
           </Flex>
         </Flex>
         <Flex gap={4} alignItems={"center"}>
