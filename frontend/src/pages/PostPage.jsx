@@ -178,8 +178,8 @@ const PostPage = () => {
         <Text my={3}>{currentPost.text}</Text>
         <Button
           onClick={handleFollowToggle}
-          size="md"
-          ml={4}
+          size="sm"
+          ml={2}
           px={26}
           whiteSpace="nowrap"
           overflow="hidden"

@@ -212,8 +212,8 @@ const Post = ({ post, postedBy }) => {
                   e.stopPropagation(); // Previene la propagazione dell'evento di clic verso il Link
                   handleFollowToggle();
                 }}
-                size="md"
-                ml={4}
+                size="sm"
+                ml={2}
                 px={26}
                 whiteSpace="nowrap"
                 overflow="hidden"
