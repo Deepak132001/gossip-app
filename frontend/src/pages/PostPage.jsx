@@ -8,6 +8,7 @@ import {
   Image,
   Spinner,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
@@ -96,7 +97,8 @@ const PostPage = () => {
     if (!currentPost) return;
 
     try {
-      if (!window.confirm("Sei sicuro di voler eliminare questo gossip?")) return;
+      if (!window.confirm("Sei sicuro di voler eliminare questo gossip?"))
+        return;
 
       const res = await fetch(`/api/posts/${currentPost._id}`, {
         method: "DELETE",
@@ -170,7 +172,16 @@ const PostPage = () => {
 
       <Flex justifyContent="space-between" alignItems="center" my={3}>
         <Text my={3}>{currentPost.text}</Text>
-        <Button onClick={handleFollowToggle} size="sm" variant="outline">
+        <Box width="20px" /> {/* add some space to defrentiate it from the text*/}
+        <Button
+          onClick={handleFollowToggle}
+          size="sm"
+          maxWidth="150px"
+          whiteSpace="nowrap"
+          overflow="hidden"
+          textOverflow="ellipsis"
+          colorScheme={useColorModeValue("teal", "orange")}
+        >
           {isFollowing ? "Trascura" : `Traccia`}
           {/* Traccia è seguire, Trascura è non seguire */}
         </Button>
@@ -227,10 +238,10 @@ const PostPage = () => {
         <Flex gap={2} alignItems={"center"}>
           <Text fontSize={"2xl"}>😉</Text>
           <Text color={"gray.400"}>
-            &quot;Siete liberi di parlare di qualsiasi
-            persona pubblica o privata, ma ricordate di non menzionare il nome
-            di persone private che conoscete personalmente. Grazie! Sentitevi
-            liberi di raccontare storie su amici o colleghi.&quot;
+            &quot;Siete liberi di parlare di qualsiasi persona pubblica o
+            privata, ma ricordate di non menzionare il nome di persone private
+            che conoscete personalmente. Grazie! Sentitevi liberi di raccontare
+            storie su amici o colleghi.&quot;
           </Text>
         </Flex>
       </Flex>

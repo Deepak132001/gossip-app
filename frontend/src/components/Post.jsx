@@ -76,7 +76,8 @@ const Post = ({ post, postedBy }) => {
   const handleDeletePost = async (e) => {
     try {
       e.preventDefault();
-      if (!window.confirm("Sei sicuro di voler eliminare questo gossip?")) return;
+      if (!window.confirm("Sei sicuro di voler eliminare questo gossip?"))
+        return;
 
       const res = await fetch(`/api/posts/${post._id}`, {
         method: "DELETE",
@@ -131,7 +132,7 @@ const Post = ({ post, postedBy }) => {
                 />
               ))}
             </Box>
-              {/* Hanrdcorded  */}
+            {/* Hanrdcorded  */}
             {/* <Box position={"relative"} w={"full"}>
               {post.replies.length === 0 && (
                 <Text textAlign={"center"}>🥱</Text>
@@ -211,7 +212,11 @@ const Post = ({ post, postedBy }) => {
                   handleFollowToggle();
                 }}
                 size="sm"
-                variant="outline"
+                maxWidth="150px"
+                whiteSpace="nowrap"
+                overflow="hidden"
+                textOverflow="ellipsis"
+                colorScheme={useColorModeValue("teal", "orange")}
               >
                 {isFollowing ? "Trascura" : `Traccia`}
               </Button>
