@@ -15,6 +15,7 @@ import { useRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 import usePreviewImg from "../hooks/usePreviewImg";
 import useShowToast from "../hooks/useShowToast";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateProfilePage() {
 	const [user, setUser] = useRecoilState(userAtom);
@@ -29,6 +30,7 @@ export default function UpdateProfilePage() {
 	const [updating, setUpdating] = useState(false);
 
 	const showToast = useShowToast();
+	const navigate =  useNavigate();
 
 	const { handleImageChange, imgUrl } = usePreviewImg();
 
@@ -60,13 +62,7 @@ export default function UpdateProfilePage() {
 	};
 
 	const handleCancel = () => {
-		setInputs({
-			name: user.name,
-			username: user.username,
-			email: user.email,
-			bio: user.bio,
-			password: "",
-		});
+		navigate(`/${user.username}`)
 	};
 
 	return (
