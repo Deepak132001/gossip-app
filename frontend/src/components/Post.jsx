@@ -95,7 +95,7 @@ const Post = ({ post, postedBy }) => {
   };
 
   const switchColor = useColorModeValue("black", "white");
-  const buttonColor = useColorModeValue("teal", "orange")
+  const buttonColor = useColorModeValue("teal", "orange");
 
   if (!user) return null;
   return (
@@ -212,10 +212,9 @@ const Post = ({ post, postedBy }) => {
                   e.stopPropagation(); // Previene la propagazione dell'evento di clic verso il Link
                   handleFollowToggle();
                 }}
-                size="sm"
+                size="md"
                 ml={4}
                 p={3}
-                width="100px"
                 colorScheme= {buttonColor}
               >
                 {isFollowing ? "Trascura" : `Traccia`}

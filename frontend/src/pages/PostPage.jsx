@@ -176,8 +176,7 @@ const PostPage = () => {
         <Text my={3}>{currentPost.text}</Text>
         <Button
           onClick={handleFollowToggle}
-          size="sm"
-          width="100px"
+          size="md"
           ml={4}
           p={3}
           colorScheme={buttonColor}
