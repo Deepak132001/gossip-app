@@ -8,6 +8,7 @@ import {
   Image,
   Spinner,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
@@ -32,6 +33,8 @@ const PostPage = () => {
 
   // State to manage follow/unfollow status
   const [isFollowing, setIsFollowing] = useState(false);
+
+  const buttonColor = useColorModeValue("teal", "orange")
 
   // Get the current post
   const currentPost =
@@ -171,14 +174,13 @@ const PostPage = () => {
 
       <Flex justifyContent="space-between" alignItems="center" my={3}>
         <Text my={3}>{currentPost.text}</Text>
-        <Box width="20px" /> {/* add some space to defrentiate it from the text*/}
         <Button
           onClick={handleFollowToggle}
           size="sm"
           width="100px"
           ml={4}
           p={3}
-          colorScheme={useColorModeValue("teal", "orange")}
+          colorScheme={buttonColor}
         >
           {isFollowing ? "Trascura" : `Traccia`}
           {/* Traccia è seguire, Trascura è non seguire */}

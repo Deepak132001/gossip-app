@@ -95,6 +95,7 @@ const Post = ({ post, postedBy }) => {
   };
 
   const switchColor = useColorModeValue("black", "white");
+  const buttonColor = useColorModeValue("teal", "orange")
 
   if (!user) return null;
   return (
@@ -215,7 +216,7 @@ const Post = ({ post, postedBy }) => {
                 ml={4}
                 p={3}
                 width="100px"
-                colorScheme={useColorModeValue("teal", "orange")}
+                colorScheme= {buttonColor}
               >
                 {isFollowing ? "Trascura" : `Traccia`}
               </Button>
