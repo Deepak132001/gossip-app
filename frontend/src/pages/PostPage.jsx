@@ -8,7 +8,6 @@ import {
   Image,
   Spinner,
   Text,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
@@ -176,10 +175,6 @@ const PostPage = () => {
         <Button
           onClick={handleFollowToggle}
           size="sm"
-          maxWidth="150px"
-          whiteSpace="nowrap"
-          overflow="hidden"
-          textOverflow="ellipsis"
           colorScheme={useColorModeValue("teal", "orange")}
         >
           {isFollowing ? "Trascura" : `Traccia`}

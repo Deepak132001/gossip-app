@@ -212,10 +212,6 @@ const Post = ({ post, postedBy }) => {
                   handleFollowToggle();
                 }}
                 size="sm"
-                maxWidth="150px"
-                whiteSpace="nowrap"
-                overflow="hidden"
-                textOverflow="ellipsis"
                 colorScheme={useColorModeValue("teal", "orange")}
               >
                 {isFollowing ? "Trascura" : `Traccia`}
