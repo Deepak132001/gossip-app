@@ -114,7 +114,7 @@ const Actions = ({ post }) => {
       setIsReplying(false);
     }
   };
-  
+
   const handleShare = async () => {
     try {
       const res = await fetch(`/api/posts/share/${post._id}`);
@@ -174,13 +174,9 @@ const Actions = ({ post }) => {
       </Flex>
 
       <Flex gap={2} alignItems={"center"}>
-        <Text fontSize="sm">
-          {post.replies.length} risposte
-        </Text>
+        <Text fontSize="sm">{post.likes.length} like</Text>
         <Box w={0.5} h={0.5} borderRadius={"full"} bg={"gray.light"}></Box>
-        <Text fontSize="sm">
-          {post.likes.length} like
-        </Text>
+        <Text fontSize="sm">{post.replies.length} {post.replies.length === 1 ? 'risposta' : 'risposte'}</Text>
       </Flex>
 
       <Modal isOpen={isOpen} onClose={onClose}>

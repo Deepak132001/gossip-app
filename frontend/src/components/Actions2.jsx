@@ -224,7 +224,7 @@ const Actions2 = ({ post }) => {
       <Flex gap={2} alignItems={"center"}>
         <Text fontSize="sm">{post.likes.length} like</Text>
         <Box w={0.5} h={0.5} borderRadius={"full"} bg={"gray.light"}></Box>
-        <Text fontSize="sm">{post.replies.length} risposte</Text>
+        <Text fontSize="sm">{post.replies.length} {post.replies.length === 1 ? 'risposta' : 'risposte'}</Text>
       </Flex>
 
       {/* Commenta sotto il Post */}
