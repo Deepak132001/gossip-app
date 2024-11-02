@@ -176,6 +176,8 @@ const PostPage = () => {
           onClick={handleFollowToggle}
           size="sm"
           width="100px"
+          ml={4}
+          p={3}
           colorScheme={useColorModeValue("teal", "orange")}
         >
           {isFollowing ? "Trascura" : `Traccia`}

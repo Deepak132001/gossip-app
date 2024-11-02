@@ -212,6 +212,8 @@ const Post = ({ post, postedBy }) => {
                   handleFollowToggle();
                 }}
                 size="sm"
+                ml={4}
+                p={3}
                 width="100px"
                 colorScheme={useColorModeValue("teal", "orange")}
               >
