@@ -177,6 +177,25 @@ const getUserPosts = async (req, res) => {
 };
 
 // get all posts from any user
+// const getOtherPosts = async (req, res) => {
+// 	try {
+// 		if (!req.user || !req.user._id) {
+// 			return res.status(401).json({ error: "Utente non autenticato" });
+// 		}
+
+// 		const userId = req.user._id;
+
+// 		// Recupera i post di altri utenti (non quelli dell'utente corrente)
+// 		const otherPosts = await Post.find({ postedBy: { $ne: userId } })
+// 			.sort({ createdAt: -1 })
+// 			.limit(20);
+
+// 		res.status(200).json(otherPosts);
+// 	} catch (err) {
+// 		console.error(err);
+// 		res.status(500).json({ error: "Errore nel recupero dei post" });
+// 	}
+// };
 const getOtherPosts = async (req, res) => {
 	try {
 		if (!req.user || !req.user._id) {
@@ -185,8 +204,14 @@ const getOtherPosts = async (req, res) => {
 
 		const userId = req.user._id;
 
-		// Recupera i post di altri utenti (non quelli dell'utente corrente)
-		const otherPosts = await Post.find({ postedBy: { $ne: userId } })
+		// Retrieve the list of users the current user is following
+		const user = await User.findById(userId).populate("following", "_id");
+		const followingIds = user.following.map((followedUser) => followedUser._id);
+
+		// Fetch posts either from users the user is not following or from the user themselves
+		const otherPosts = await Post.find({
+			$or: [{ postedBy: { $nin: followingIds } }, { postedBy: userId }],
+		})
 			.sort({ createdAt: -1 })
 			.limit(20);
 
@@ -196,6 +221,7 @@ const getOtherPosts = async (req, res) => {
 		res.status(500).json({ error: "Errore nel recupero dei post" });
 	}
 };
+
 
   // Follow a post
 const followPost = async (req, res) => {
