@@ -214,8 +214,10 @@ const Post = ({ post, postedBy }) => {
                 }}
                 size="md"
                 ml={4}
-                p={3}
-                colorScheme= {buttonColor}
+                px={4}
+                whiteSpace="nowrap"
+                overflow="hidden"
+                colorScheme={buttonColor}
               >
                 {isFollowing ? "Trascura" : `Traccia`}
               </Button>

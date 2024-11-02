@@ -34,7 +34,7 @@ const PostPage = () => {
   // State to manage follow/unfollow status
   const [isFollowing, setIsFollowing] = useState(false);
 
-  const buttonColor = useColorModeValue("teal", "orange")
+  const buttonColor = useColorModeValue("teal", "orange");
 
   // Get the current post
   const currentPost =
@@ -178,7 +178,9 @@ const PostPage = () => {
           onClick={handleFollowToggle}
           size="md"
           ml={4}
-          p={3}
+          px={4}
+          whiteSpace="nowrap"
+          overflow="hidden"
           colorScheme={buttonColor}
         >
           {isFollowing ? "Trascura" : `Traccia`}
