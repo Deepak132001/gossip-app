@@ -164,19 +164,7 @@ const PostPage = () => {
             fa
           </Text>
 
-          {currentUser?._id === user._id && (
-            <DeleteIcon
-              size={20}
-              cursor={"pointer"}
-              onClick={handleDeletePost}
-            />
-          )}
-        </Flex>
-      </Flex>
-
-      <Flex justifyContent="space-between" alignItems="center" my={3}>
-        <Text my={3}>{currentPost.text}</Text>
-        <Button
+          <Button
           onClick={handleFollowToggle}
           size="sm"
           ml={2}
@@ -188,7 +176,20 @@ const PostPage = () => {
           {isFollowing ? "Trascura" : `Traccia`}
           {/* Traccia è seguire, Trascura è non seguire */}
         </Button>
+
+          {currentUser?._id === user._id && (
+            <DeleteIcon
+              size={20}
+              cursor={"pointer"}
+              onClick={handleDeletePost}
+            />
+          )}
+        </Flex>
       </Flex>
+
+      {/* <Flex justifyContent="space-between" alignItems="center" my={3}> */}
+        <Text my={3}>{currentPost.text}</Text>
+      {/* </Flex> */}
 
       {/* <Text my={3}>{currentPost.text}</Text> */}
 
