@@ -198,15 +198,29 @@ const Post = ({ post, postedBy }) => {
                   fa
                 </Text>
 
+                {/* Trascura/Traccia Button */}
+                <Button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleFollowToggle();
+                  }}
+                  size="xs"
+                  colorScheme={buttonColor}
+                  ml={2}
+                >
+                  {isFollowing ? "Trascura" : "Traccia"}
+                </Button>
+
                 {currentUser?._id === user._id && (
                   <DeleteIcon size={20} onClick={handleDeletePost} />
                 )}
               </Flex>
             </Flex>
 
-            <Flex justifyContent="space-between" alignItems="center" my={3}>
+            {/* <Flex justifyContent="space-between" alignItems="center" my={3}> */}
               <Text fontSize={"sm"}>{post.text}</Text>
-              <Button
+              {/* <Button
                 onClick={(e) => {
                   e.preventDefault(); // Evita la navigazione
                   e.stopPropagation(); // Previene la propagazione dell'evento di clic verso il Link
@@ -220,8 +234,8 @@ const Post = ({ post, postedBy }) => {
                 colorScheme={buttonColor}
               >
                 {isFollowing ? "Trascura" : `Traccia`}
-              </Button>
-            </Flex>
+              </Button> */}
+            {/* </Flex> */}
 
             {/* <Text fontSize={"sm"}>{post.text}</Text> */}
             {post.img && (

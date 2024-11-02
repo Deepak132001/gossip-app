@@ -3,10 +3,10 @@ import {
   Button,
   Flex,
   FormControl,
-  Input,
   Text,
   useDisclosure,
   useColorModeValue,
+  Textarea,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
@@ -242,13 +242,18 @@ const Actions2 = ({ post }) => {
         zIndex="1000"
       >
         <FormControl display="flex" alignItems="center">
-          <Input
+          <Textarea
             placeholder="La risposta va qui..."
             _placeholder={{ color: useColorModeValue("#6c757d", "#e5e5e5") }}
             value={reply}
             onChange={(e) => setReply(e.target.value)}
             color={useColorModeValue("black", "white")}
             bg={useColorModeValue("white", "#4e148c")}
+            resize="none"
+            rows={1}
+            onFocus={(e) => e.target.rows = 2}
+            onBlur={(e) => e.target.rows = 1}
+            style={{ overflow: "hidden" }}
           />
           <Button
             colorScheme="blue"

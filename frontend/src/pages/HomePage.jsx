@@ -78,7 +78,7 @@ const HomePage = () => {
             </Box>
             <Box mb={4} fontWeight={"bold"}>
               <Button variant={"outline"}>
-                <Link to="/followed-posts">Traccia</Link>
+                <Link to="/followed-posts">Tracciati</Link>
               </Button>
             </Box>
           </Flex>
