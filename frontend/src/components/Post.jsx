@@ -214,7 +214,7 @@ const Post = ({ post, postedBy }) => {
                 }}
                 size="md"
                 ml={4}
-                px={4}
+                px={26}
                 whiteSpace="nowrap"
                 overflow="hidden"
                 colorScheme={buttonColor}
