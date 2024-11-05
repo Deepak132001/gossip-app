@@ -1,16 +1,13 @@
-import { Box, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import useShowToast from "../hooks/useShowToast";
+import { Box, Heading, Spinner, VStack, Container, Text } from "@chakra-ui/react";
 import Post from "../components/Post";
-import { useRecoilState } from "recoil";
-import postsAtom from "../atoms/postsAtom";
-import SuggestedUsers from "../components/SuggestedUsers";
 
 const FeedPage = () => {
-  const [posts, setPosts] = useRecoilState(postsAtom);
+  const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const showToast = useShowToast();
+  const [error, setError] = useState(null);
 
+  // Fetch posts from backend
   useEffect(() => {
     const getFeedPosts = async () => {
       try {
@@ -24,54 +21,52 @@ const FeedPage = () => {
             "Content-Type": "application/json",
           },
         });
-        const data = await res.json();
 
-        if (data.error) {
-          showToast("Error", data.error, "error");
-          return;
+        if (!res.ok) {
+          throw new Error("Failed to fetch posts");
         }
 
-        // Imposto i post recuperati dallo stato
+        const data = await res.json();
         setPosts(data);
-      } catch (error) {
-        showToast("Error", error.message, "error");
+      } catch (err) {
+        setError(err.message);
       } finally {
         setLoading(false);
       }
     };
 
     getFeedPosts();
-  }, [showToast, setPosts]);
+  }, []);
 
+  // Render loading state
+  if (loading) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+        <Spinner size="xl" />
+      </Box>
+    );
+  }
+
+  // Render error state
+  if (error) {
+    return (
+      <Box textAlign="center" mt={10}>
+        <Heading size="lg">Error</Heading>
+        <Text>{error}</Text>
+      </Box>
+    );
+  }
+
+  // Render posts
   return (
-    <>
-      <Flex gap="10" alignItems={"flex-start"}>
-        <Box>
-          {loading && (
-            <Flex justify="center">
-              <Spinner size="xl" />
-            </Flex>
-          )}
-
-          {!loading && posts.length === 0 && (
-            <Text>Nessun post disponibile al momento.</Text>
-          )}
-
-          {!loading && posts.map((post) => (
-            <Post key={post._id} post={post} postedBy={post.postedBy} />
-          ))}
-        </Box>
-        <Box
-          flex={30}
-          display={{
-            base: "none",
-            md: "block",
-          }}
-        >
-          <SuggestedUsers />
-        </Box>
-      </Flex>
-    </>
+    <Container maxW="container.md" mt={10}>
+      <Text fontSize={"20px"} textAlign={"center"} mb={6}>Feed</Text>
+      <VStack spacing={6} align="stretch">
+        {posts.map((post) => (
+          <Post key={post._id} post={post} postedBy={post.postedBy} />
+        ))}
+      </VStack>
+    </Container>
   );
 };
 

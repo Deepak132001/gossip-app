@@ -60,11 +60,11 @@ const HomePage = () => {
 
           {/* Pulsanti per filtrare i post */}
           <Flex justifyContent={"center"} m={1}>
-            <Box mb={4} fontWeight={"bold"} marginRight={4}>
+            {/* <Box mb={4} fontWeight={"bold"} marginRight={4}>
               <Button variant={"outline"}>
-                <Link to="/feed">Novità</Link>
+                <Link to="/feed">Seg</Link>
               </Button>
-            </Box>
+            </Box> */}
             <Box mb={4} fontWeight={"bold"}>
               <Button variant={"outline"}>
                 <Link to="/followed-posts">Tracciati</Link>
