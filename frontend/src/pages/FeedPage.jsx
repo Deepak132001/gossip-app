@@ -46,7 +46,7 @@ const FeedPage = () => {
   return (
     <>
       <Flex gap="10" alignItems={"flex-start"}>
-        <Box flex={70}>
+        <Box>
           {loading && (
             <Flex justify="center">
               <Spinner size="xl" />
